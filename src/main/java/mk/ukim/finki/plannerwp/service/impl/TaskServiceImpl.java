@@ -25,7 +25,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task addTask(Long taskId, String taskName, String description, Date date, Priority priority, boolean status) {
+    public Task addTask(String taskName, String description, Date date, Priority priority, boolean status) {
         if (taskName == null || taskName.isEmpty()) {
             throw new InvalidArgumentException();
         }
