@@ -5,6 +5,7 @@ import mk.ukim.finki.plannerwp.model.enumerations.Priority;
 import mk.ukim.finki.plannerwp.service.TaskService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -30,9 +31,10 @@ public class TaskController {
     }
 
     @PostMapping
-    public String editTask(Long id) { //treba da se dodade
+    public String editTask(Long id, Model model) {
         if (this.taskService.findById(id).isPresent()) {
             Task task = this.taskService.findById(id).get();
+            model.addAttribute("task", task);
             return "taskForm";
         }
         return "redirect:/dailyTasks?error=taskNotFound";

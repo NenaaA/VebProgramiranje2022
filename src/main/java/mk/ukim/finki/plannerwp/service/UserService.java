@@ -7,5 +7,5 @@ import java.util.Date;
 public interface UserService {
 
     UserAccount login(String username, String password);
-    UserAccount register(String username, String password, String name, String surname, Date dateOfBirth, String email);
+    UserAccount register(String username, String password, String repeatPassword, String name, String surname, Date dateOfBirth, String email);
 }

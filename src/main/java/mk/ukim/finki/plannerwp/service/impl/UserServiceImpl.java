@@ -3,6 +3,7 @@ package mk.ukim.finki.plannerwp.service.impl;
 import mk.ukim.finki.plannerwp.model.UserAccount;
 import mk.ukim.finki.plannerwp.model.exceptions.InvalidArgumentException;
 import mk.ukim.finki.plannerwp.model.exceptions.InvalidUserCredentialsException;
+import mk.ukim.finki.plannerwp.model.exceptions.PasswordsDoNotMatchException;
 import mk.ukim.finki.plannerwp.model.exceptions.UserAlreadyExistsException;
 import mk.ukim.finki.plannerwp.repository.jpa.UserAccountRepository;
 import mk.ukim.finki.plannerwp.service.UserService;
@@ -31,9 +32,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserAccount register(String username, String password, String name, String surname, Date dateOfBirth, String email) {
+    public UserAccount register(String username, String password, String repeatPassword, String name, String surname, Date dateOfBirth, String email) {
         if(username == null || username.isEmpty() || password == null || password.isEmpty() || name == null || name.isEmpty()) { //TODO, check for email
             throw new InvalidArgumentException();
+        }
+
+        if(!password.equals(repeatPassword)){
+            throw new PasswordsDoNotMatchException();
         }
 
         if(this.userAccountRepository.findByUsername(username).isPresent()) {
