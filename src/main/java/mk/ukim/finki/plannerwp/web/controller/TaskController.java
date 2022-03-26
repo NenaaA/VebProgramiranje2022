@@ -27,7 +27,7 @@ public class TaskController {
                           @RequestParam Priority priority,
                           @RequestParam boolean status) {
         this.taskService.addTask(taskName, description, date, priority, status);
-        return "redirect:/dailyTasks";
+        return "dailyTasks";
     }
 
 //    @PostMapping
@@ -43,7 +43,7 @@ public class TaskController {
     @DeleteMapping("/delete/{id}")
     public String deleteById(@PathVariable Long id) {
         this.taskService.deleteTask(id);
-        return "redirect:/dailyTasks";
+        return "dailyTasks";
     }
 
 }
