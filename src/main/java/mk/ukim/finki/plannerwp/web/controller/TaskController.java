@@ -30,15 +30,15 @@ public class TaskController {
         return "redirect:/dailyTasks";
     }
 
-    @PostMapping
-    public String editTask(Long id, Model model) {
-        if (this.taskService.findById(id).isPresent()) {
-            Task task = this.taskService.findById(id).get();
-            model.addAttribute("task", task);
-            return "taskForm";
-        }
-        return "redirect:/dailyTasks?error=taskNotFound";
-    }
+//    @PostMapping
+//    public String editTask(Long id, Model model) {
+//        if (this.taskService.findById(id).isPresent()) {
+//            Task task = this.taskService.findById(id).get();
+//            model.addAttribute("task", task);
+//            return "taskForm";
+//        }
+//        return "redirect:/dailyTasks?error=taskNotFound";
+//    }
 
     @DeleteMapping("/delete/{id}")
     public String deleteById(@PathVariable Long id) {

@@ -1,7 +1,6 @@
 package mk.ukim.finki.plannerwp.web.controller;
 
 import mk.ukim.finki.plannerwp.model.DailyTasks;
-import mk.ukim.finki.plannerwp.model.UserAccount;
 import mk.ukim.finki.plannerwp.service.DailyTasksService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
