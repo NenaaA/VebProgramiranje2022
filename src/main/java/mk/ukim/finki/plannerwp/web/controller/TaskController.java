@@ -4,6 +4,7 @@ import mk.ukim.finki.plannerwp.model.Task;
 import mk.ukim.finki.plannerwp.model.enumerations.Priority;
 import mk.ukim.finki.plannerwp.service.TaskService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,25 +21,26 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @PostMapping
+    @PostMapping //save method
     public String addTask(@RequestParam String taskName,
                           @RequestParam String description,
                           @RequestParam Date date,
                           @RequestParam Priority priority,
                           @RequestParam boolean status) {
         this.taskService.addTask(taskName, description, date, priority, status);
-        return "dailyTasks";
+        return "redirect:/dailyTasks";
     }
 
-//    @PostMapping
-//    public String editTask(Long id, Model model) {
-//        if (this.taskService.findById(id).isPresent()) {
-//            Task task = this.taskService.findById(id).get();
-//            model.addAttribute("task", task);
-//            return "taskForm";
-//        }
-//        return "redirect:/dailyTasks?error=taskNotFound";
-//    }
+    @PostMapping("/edit-form/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String editTask(@PathVariable Long id, Model model) {
+        if (this.taskService.findById(id).isPresent()) {
+            Task task = this.taskService.findById(id).get();
+            model.addAttribute("task", task);
+            return "taskForm";
+        }
+        return "redirect:/dailyTasks?error=taskNotFound";
+    }
 
     @DeleteMapping("/delete/{id}")
     public String deleteById(@PathVariable Long id) {
