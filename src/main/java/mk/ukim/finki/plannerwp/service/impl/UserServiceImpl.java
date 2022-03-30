@@ -48,7 +48,5 @@ public class UserServiceImpl implements UserService {
         UserAccount userAccount = new UserAccount(username, password, name, surname, dateOfBirth, email);
         return userAccountRepository.save(userAccount);
 
-        //TODO da vidime za pishuvanje 2 pati password
-
     }
 }

@@ -3,12 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        html {
+            font-family: source-sans-pro, sans-serif;
+            font-style: normal;
+            font-weight: bold;
+            background-color: rgb(252, 249, 249);
+            letter-spacing: 0.3px;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            background-color: aliceblue;
+        }
+
+        #logo {
+            height: 50px;
+            width: 250px;
+            background-color: #247abf;
+        }
+
+        #profile {
+            height: 50px;
+            width: 50px;
+            background-color: #247abf;
+        }
+
+        .sideNav {
+            padding: 7px 15px;
+            font-weight: bold;
+            font-family: Arial;
+            font-size: 20px;
+            width: 200px;
+        }
+
+        .sideNav li {
+            padding: 7px 15px;
+            list-style-type: circle;
+        }
+
+        .sideNav a {
+            color: #247abf;
+            text-decoration: none;
+        }
+
+        .sidemap {
+            border: 1px solid darkgray;
+            height: 100%;
+        }
+        .main {
+            display: flex;
+        }
+        .content{
+            /*align-self: center;*/
+            margin-left: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items:center;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
-    <h2>Have all your tasks in one place</h2>
-    <a href="/dailyTasks" class="btn btn-block btn-light">
-        <button >Go to your tasks</button>
-    </a>
-
+<nav class="navigation">
+    <div id="logo"></div>
+    <div id="profile"></div>
+</nav>
+<div class="main">
+    <div class="sidemap">
+        <ul class="sideNav">
+            <li><a href="#">Tasks</a></li>
+            <li><a href="#">Daily Tasks</a></li>
+            <li><a href="#">Weekly Tasks</a></li>
+            <li><a href="#">Tasks in progress</a></li>
+            <li><a href="#">Finished Tasks</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <h2>Have all your tasks in one place</h2>
+        <button>Go to your tasks</button>
+    </div>
+</div>
 </body>
 </html>
