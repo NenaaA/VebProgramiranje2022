@@ -11,14 +11,20 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
-@Controller
+@RestController
 @RequestMapping("/task")
+@CrossOrigin(origins = "http://localhost:3000")
 public class TaskController {
 
     private final TaskService taskService;
 
     public TaskController(TaskService taskService) {
         this.taskService = taskService;
+    }
+
+    @GetMapping("/taskForm")
+    public String getHomePage() {
+        return "taskForm";
     }
 
     @PostMapping //save method
