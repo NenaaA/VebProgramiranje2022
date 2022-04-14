@@ -3,17 +3,13 @@ package mk.ukim.finki.plannerwp.web.controller;
 import mk.ukim.finki.plannerwp.model.UserAccount;
 import mk.ukim.finki.plannerwp.model.exceptions.InvalidUserCredentialsException;
 import mk.ukim.finki.plannerwp.service.UserService;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/api/login")
 @CrossOrigin(origins = "http://localhost:3000")
 public class LoginController {
 
