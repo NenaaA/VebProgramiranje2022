@@ -3,10 +3,7 @@ package mk.ukim.finki.plannerwp.model;
 import lombok.Data;
 import mk.ukim.finki.plannerwp.model.enumerations.Priority;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.Random;
 
@@ -20,6 +17,8 @@ public class Task {
     private Long taskId;
 
     private String taskName;
+
+    @Column(length = 2000)
     private String description;
     private Date date;
     private Priority priority;

@@ -7,6 +7,8 @@ import mk.ukim.finki.plannerwp.model.exceptions.PasswordsDoNotMatchException;
 import mk.ukim.finki.plannerwp.model.exceptions.UserAlreadyExistsException;
 import mk.ukim.finki.plannerwp.repository.jpa.UserAccountRepository;
 import mk.ukim.finki.plannerwp.service.UserService;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -18,17 +20,6 @@ public class UserServiceImpl implements UserService {
 
     public UserServiceImpl(UserAccountRepository userAccountRepository) {
         this.userAccountRepository = userAccountRepository;
-    }
-
-    @Override
-    public UserAccount login(String username, String password) {
-        if(username == null || username.isEmpty() || password == null || password.isEmpty()) {
-            throw new InvalidArgumentException();
-        }
-
-        return userAccountRepository.findByUsernameAndPassword(username, password)
-                .orElseThrow(InvalidUserCredentialsException::new);
-
     }
 
     @Override
@@ -48,5 +39,10 @@ public class UserServiceImpl implements UserService {
         UserAccount userAccount = new UserAccount(username, password, name, surname, dateOfBirth, email);
         return userAccountRepository.save(userAccount);
 
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return (UserDetails) userAccountRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username));
     }
 }

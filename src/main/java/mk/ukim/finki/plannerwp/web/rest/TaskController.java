@@ -1,6 +1,7 @@
 package mk.ukim.finki.plannerwp.web.rest;
 
 import mk.ukim.finki.plannerwp.model.Task;
+import mk.ukim.finki.plannerwp.model.dto.TaskDto;
 import mk.ukim.finki.plannerwp.model.enumerations.Priority;
 import mk.ukim.finki.plannerwp.service.TaskService;
 import org.springframework.http.ResponseEntity;
@@ -21,34 +22,31 @@ public class TaskController {
         this.taskService = taskService;
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Task> findById(@PathVariable Long id) {
+        return this.taskService.findById(id)
+                .map(product -> ResponseEntity.ok().body(product))
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
 
-//    @PostMapping ("/add")
-//    public ResponseEntity<Task> addTask(@RequestParam String taskName,
-//                                        @RequestParam String description,
-//                                        @RequestParam Date date,
-//                                        @RequestParam Priority priority,
-//                                        @RequestParam boolean status) {
-//        return this.taskService.addTask(taskName, description, date, priority, status)
-//                .map(newTask -> ResponseEntity.ok().body(newTask))
-//                .orElseGet(() -> ResponseEntity.badRequest().build());
-//    }
-//
-//    @PostMapping("/edit-form/{id}")
-//    public String editTask(@PathVariable Long id,
-//                           @RequestParam String taskName,
-//                           @RequestParam String description,
-//                           @RequestParam Date date,
-//                           @RequestParam Priority priority,
-//                           @RequestParam boolean status) {
-//        return this.taskService.editTask(id, taskName, description, date, priority, status)
-//                .map(edited -> ResponseEntity.ok().body(edited))
-//                .orElseGet(() -> ResponseEntity.badRequest().body());
-//    }
+        @PostMapping ("/add")
+    public ResponseEntity<Task> saveTask(@RequestBody TaskDto taskDto) throws Exception {
+        return this.taskService.saveTask(taskDto)
+                .map(newTask -> ResponseEntity.ok().body(newTask))
+                .orElseGet(() -> ResponseEntity.badRequest().build());
+    }
+
+    @PostMapping("/edit-form/{id}")
+    public ResponseEntity<Task> editTask(@PathVariable Long id, @RequestBody TaskDto taskDto) {
+        return this.taskService.editTask(id, taskDto)
+                .map(task -> ResponseEntity.ok().body(task))
+                .orElseGet(() -> ResponseEntity.badRequest().build());
+    }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteById(@PathVariable Long id) {
         this.taskService.deleteTask(id);
-        if(this.taskService.findById(id).isEmpty()) return ResponseEntity.ok().build();
+        if (this.taskService.findById(id).isEmpty()) return ResponseEntity.ok().build();
         return ResponseEntity.badRequest().build();
     }
 
