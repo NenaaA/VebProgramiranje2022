@@ -1,7 +1,7 @@
 import axios from '../custom-axios/axios'
 
-const service = {
-
+export const TaskService = {
+    fetchTasks: (date) => {
+        return axios.get(`/api/dailyTasks/date/${date}`)
+    }
 }
-
-export default service;

@@ -1,12 +1,12 @@
-import HomePage from "../home/home";
-import Layout from "../../ui/layout/Layout";
+import Login from "../login/login";
+import AuthLayout from "../../ui/layout/auth-layout/AuthLayout";
 
 function App() {
     return (
         <>
-            <Layout>
-                <HomePage/>
-            </Layout>
+            <AuthLayout>
+                <Login/>
+            </AuthLayout>
         </>
     );
 }

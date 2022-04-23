@@ -1,9 +1,9 @@
-import CustomDrawer from "../drawer/CustomDrawer";
+import CustomDrawer from "../../drawer/CustomDrawer";
 import {AppBar, Box, Grid, Toolbar, Typography} from "@mui/material";
 import React from "react";
 import {PersonOutline} from "@mui/icons-material";
 
-const Layout = ({children}) => {
+const HomeLayout = ({children}) => {
     return (
         <>
             <AppBar position={"fixed"}
@@ -38,4 +38,4 @@ const Layout = ({children}) => {
     );
 }
 
-export default Layout;
+export default HomeLayout;

@@ -10,7 +10,7 @@ const CustomDrawer = () => {
                 flexShrink: 0,
                 [`& .MuiDrawer-paper`]: { width: "12em", boxSizing: 'border-box' },
             }}
-            PaperProps={{sx:{backgroundColor: "#066594"}}}
+            PaperProps={{sx:{backgroundColor: "#066594"}}} //3C8EB6 FF714B
         >
             <Toolbar/>
             <List sx={{color:"white"}}>
