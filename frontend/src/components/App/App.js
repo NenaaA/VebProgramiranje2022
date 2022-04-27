@@ -1,12 +1,12 @@
-import Login from "../login/login";
-import AuthLayout from "../../ui/layout/auth-layout/AuthLayout";
+import HomeLayout from "../../ui/layout/home-layout/HomeLayout";
+import Task from "../task/task";
 
 function App() {
     return (
         <>
-            <AuthLayout>
-                <Login/>
-            </AuthLayout>
+            <HomeLayout>
+                <Task/>
+            </HomeLayout>
         </>
     );
 }

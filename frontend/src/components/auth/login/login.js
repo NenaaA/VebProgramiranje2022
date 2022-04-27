@@ -9,9 +9,9 @@ import {
 } from "@mui/material";
 import {Visibility, VisibilityOff} from "@mui/icons-material";
 import {useState} from "react";
-import AlternativeActionButtons from "../../ui/alternative-action-buttons/AlternativeActionButtons";
+import AlternativeActionButtons from "../../../ui/alternative-action-buttons/AlternativeActionButtons";
 
-const Login = () => {
+const Login = (props) => {
     const [seePassword, setSeePassword] = useState(false);
 
     const handleSeePassword = () => {
@@ -46,7 +46,7 @@ const Login = () => {
                         Login</Button>
                 </Box>
             </FormControl>
-            <AlternativeActionButtons login={true}/>
+            <AlternativeActionButtons login={true} handleButtonClick={props.handleRegisterClick}/>
         </>
     );
 }

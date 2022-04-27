@@ -14,6 +14,7 @@ const AlternativeActionButtons = (props) => {
                       justifyContent={"center"}
                       mt={"1.5em"}>
                     <Button variant={"contained"}
+                            onClick={props.handleButtonClick}
                             sx={{width: "60%"}}>
                         {props.login ? "Register" : "Login"}</Button>
                 </Grid>
