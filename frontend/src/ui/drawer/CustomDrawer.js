@@ -14,11 +14,11 @@ const CustomDrawer = () => {
         >
             <Toolbar/>
             <List sx={{color:"white"}}>
-                <ListItem><TaskAltOutlined sx={{marginRight:"0.3em"}}/>All Tasks</ListItem>
-                <ListItem><AssignmentOutlined sx={{marginRight:"0.3em"}}/>Daily</ListItem>
-                <ListItem><DirectionsRunOutlined sx={{marginRight:"0.3em"}}/>Miscellaneous</ListItem>
-                <ListItem><PendingOutlined sx={{marginRight:"0.3em"}}/>In progress</ListItem>
-                <ListItem><Check sx={{marginRight:"0.3em"}}/>Finished</ListItem>
+                <ListItem><AssignmentOutlined sx={{marginRight:"0.3em"}}/>Home page</ListItem>
+                <ListItem><TaskAltOutlined sx={{marginRight:"0.3em"}}/>All daily tasks</ListItem>
+                {/*<ListItem><DirectionsRunOutlined sx={{marginRight:"0.3em"}}/>Miscellaneous</ListItem>*/}
+                {/*<ListItem><PendingOutlined sx={{marginRight:"0.3em"}}/>In progress</ListItem>*/}
+                {/*<ListItem><Check sx={{marginRight:"0.3em"}}/>Finished</ListItem>*/}
             </List>
         </Drawer>
     );

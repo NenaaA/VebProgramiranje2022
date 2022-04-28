@@ -23,6 +23,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserAccount login(String username, String password) {
+        return null;
+    }
+
+    @Override
     public UserAccount register(String username, String password, String repeatPassword, String name, String surname, Date dateOfBirth, String email) {
         if(username == null || username.isEmpty() || password == null || password.isEmpty() || name == null || name.isEmpty()) { //TODO, check for email
             throw new InvalidArgumentException();

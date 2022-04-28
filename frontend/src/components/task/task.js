@@ -10,15 +10,13 @@ import {
 import React, {useState} from "react";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import {Circle} from "@mui/icons-material";
+import {Circle, Done} from "@mui/icons-material";
 
-
-//da dodadam date  option vo task
 //da dodadam check mark na taskot
 
 const Task = () => {
-    const [taskContent, setTaskContent] = useState("Test description");
-    const [taskName, setTaskName] = useState("Task 1");
+    const [taskContent, setTaskContent] = useState("Task description");
+    const [taskName, setTaskName] = useState("Task name");
     const [editMode, setEditMode] = useState(false);
 
     const onEditTask = () => {
@@ -56,6 +54,7 @@ const Task = () => {
                         <Typography variant={"h6"}>{taskName}</Typography> :
                         <TextField fullWidth value={taskName}
                                    onChange={(e) => handleChangeName(e)}/>}
+
                 </Grid>
                 <Divider/>
 
@@ -93,6 +92,7 @@ const Task = () => {
                     <Circle sx={{color:"green", marginLeft:"0.8em"}}/>
                 }
 
+
                 <Grid container justifyContent={"space-between"}>
                     <Grid item sx={{
                         padding: "10px 7px",
@@ -109,6 +109,15 @@ const Task = () => {
                     }}>
                         <Button variant="outlined" startIcon={<DeleteIcon/>}>
                             Delete
+                        </Button>
+                    </Grid>
+
+                    <Grid item sx={{
+                        padding: "10px 7px",
+                        margin: "10px"
+                    }}>
+                        <Button variant="outlined" startIcon={<Done/>}>
+                            Finished
                         </Button>
                     </Grid>
 
