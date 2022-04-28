@@ -7,15 +7,15 @@ import Logout from "../auth/logout/logout";
 import Login from "../auth/login/login";
 import RegisterPasswords from "../auth/register/RegisterPasswords";
 import DailyTasks from "../dailyTasks/dailyTasks";
+import AuthLayout from "../../ui/layout/auth-layout/AuthLayout";
+import Auth from "../auth/Auth";
 
 function App() {
     return (
 
-
         <HomeLayout>
             <DailyTasks/>
         </HomeLayout>
-
 
     );
 }

@@ -9,7 +9,7 @@ const Auth = () => {
         <>
             {isLogin ?
                 <Login handleRegisterClick={() => setIsLogin(false)}/> :
-                <Register handleLoginClick={() => setIsLogin(true)}/>}
+                <Register handleLoginClick={() => setIsLogin(true)} handleRegisterClick={() => setIsLogin(false)}/>}
         </>
     )
 }

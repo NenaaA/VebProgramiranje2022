@@ -1,13 +1,9 @@
 import {Box, Button, Divider, FormControl, Paper, TextField, Typography} from "@mui/material";
 import React from "react";
 
-const RegisterPasswords = () => {
+const RegisterPasswords = (props) => {
     return (
         <>
-            <Paper style={{
-                border: "1px solid #066594",
-                padding: "30px 70px"
-            }}>
                 <Box justifyContent={"center"} display={"flex"} mb={3}>
                     <Typography variant={"h6"}>Enter your password</Typography>
                 </Box>
@@ -33,10 +29,10 @@ const RegisterPasswords = () => {
                     <Box justifyContent={"center"} display={"flex"}>
                         <Button variant="contained"
                                 type={"submit"}
-                                sx={{marginTop: "2em", width: "300px"}}>Submit</Button>
+                                onClick={props.onRegisterClick}
+                                sx={{marginTop: "2em",  width: "200px"}}>Register</Button>
                     </Box>
                 </FormControl>
-            </Paper>
         </>
     )
 }

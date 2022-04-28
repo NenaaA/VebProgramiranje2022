@@ -11,9 +11,7 @@ const DailyTasks = (props) => {
     return (
         <>
 
-            <Box style={{
-                width: "1000px"
-            }}>
+            <Box>
 
                 <Typography style={{
                     fontSize: "40px",
@@ -36,21 +34,19 @@ const DailyTasks = (props) => {
 
                 <Divider/>
 
-                <Typography></Typography>
-                {/*<List sx={{color: "white"}}>*/}
-
-                {/*</List>*/}
-
                 <Button variant="outlined"
                         onClick={() => setAddTask(true)}
                         type={"submit"}
                         style={{
                             marginTop: "50px"
                         }}>Add Task</Button>
+
+                <List sx={{color: "white"}}>
+
+                </List>
+
+                <Task/>
             </Box>
-
-
-            <Task/>
 
 
 

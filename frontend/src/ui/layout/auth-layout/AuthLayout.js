@@ -4,7 +4,7 @@ const AuthLayout = ({children}) => {
     return (
         <>
             <Box justifyContent={"center"} display={"flex"} height="100vh" sx={{backgroundColor:"#EEF4FF"}}>
-                <Paper sx={{padding:"3em", marginTop:"5em", position:"fixed"}}>
+                <Paper sx={{padding:"5em", marginTop:"5em", position:"fixed"}}>
                     {children}
                 </Paper>
             </Box>
