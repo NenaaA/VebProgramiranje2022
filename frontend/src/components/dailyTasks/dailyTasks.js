@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import {Box, Button, Divider, List, ListItem, Typography} from "@mui/material";
-import {AssignmentOutlined, Done, TaskAltOutlined} from "@mui/icons-material";
+import {Box, Button, Divider, List, Typography} from "@mui/material";
+import {Done} from "@mui/icons-material";
 import Task from "../task/task";
-import AlternativeActionButtons from "../../ui/alternative-action-buttons/AlternativeActionButtons";
+import TaskForm from "../task/task-form/TaskForm";
 
-const DailyTasks = (props) => {
+const DailyTasks = () => {
 
     const [addTask, setAddTask] = useState(false);
 
@@ -12,7 +12,6 @@ const DailyTasks = (props) => {
         <>
 
             <Box>
-
                 <Typography style={{
                     fontSize: "40px",
                     textShadow: "1px 1px 1px darkgray"
@@ -46,10 +45,8 @@ const DailyTasks = (props) => {
                 </List>
 
                 <Task/>
+                {addTask? <TaskForm/>: null}
             </Box>
-
-
-
         </>
     )
 

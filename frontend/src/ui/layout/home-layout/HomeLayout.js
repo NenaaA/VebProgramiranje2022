@@ -5,7 +5,7 @@ import {PersonOutline} from "@mui/icons-material";
 
 const HomeLayout = ({children}) => {
     return (
-        <>
+        <React.Fragment>
             <AppBar position={"fixed"}
                     sx={{
                         zIndex: (theme) => theme.zIndex.drawer + 1,
@@ -34,7 +34,7 @@ const HomeLayout = ({children}) => {
                     </Box>
                 </Grid>
             </Grid>
-        </>
+        </React.Fragment>
     );
 }
 

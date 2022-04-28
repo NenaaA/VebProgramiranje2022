@@ -1,4 +1,4 @@
-import {Box, Button, Divider, FormControl, Paper, TextField, Typography} from "@mui/material";
+import {Box, Button, Divider, FormControl, TextField, Typography} from "@mui/material";
 import AlternativeActionButtons from "../../../ui/alternative-action-buttons/AlternativeActionButtons";
 import React, {useState} from "react";
 import RegisterPasswords from "./RegisterPasswords";
