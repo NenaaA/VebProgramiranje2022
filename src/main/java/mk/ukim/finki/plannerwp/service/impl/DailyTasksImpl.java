@@ -1,13 +1,13 @@
 package mk.ukim.finki.plannerwp.service.impl;
 
-import mk.ukim.finki.plannerwp.model.DailyTasks;
-import mk.ukim.finki.plannerwp.model.enumerations.Priority;
+import mk.ukim.finki.plannerwp.model.Task;
+import mk.ukim.finki.plannerwp.model.exceptions.DailyTasksNotFoundException;
 import mk.ukim.finki.plannerwp.repository.jpa.DailyTasksRepository;
 import mk.ukim.finki.plannerwp.service.DailyTasksService;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.Optional;
+import java.util.List;
 
 @Service
 public class DailyTasksImpl implements DailyTasksService {
@@ -19,13 +19,11 @@ public class DailyTasksImpl implements DailyTasksService {
     }
 
     @Override
-    public Optional<DailyTasks> showTasks(Date date) {
-        return this.dailyTasksRepository.findById(date);
+    public List<Task> showDailyTasksByDate(Date date) {
+        if(!this.dailyTasksRepository.findById(date).isPresent())
+            throw new DailyTasksNotFoundException(date);
+        return this.dailyTasksRepository.findAllByDate(date).get().getTaskList();
     }
 
-    @Override
-    public void addTaskToDailyTasks(Long taskId, String taskName, String description, Date date, Priority priority, boolean status) {
-
-    }
 
 }

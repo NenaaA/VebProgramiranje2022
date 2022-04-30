@@ -11,17 +11,17 @@ public class TaskDto {
     private String taskName;
     private String description;
     private String date; //moze i da treba se smeni vo Date date
-    private Priority priority;
-    private boolean status;
+    private Integer priority;
+    private boolean completed;
 
     public TaskDto() {
     }
 
-    public TaskDto(String taskName, String description, String date, Priority priority, boolean status) {
+    public TaskDto(String taskName, String description, String date, Integer priority, boolean completed) {
         this.taskName = taskName;
         this.description = description;
         this.date = date;
         this.priority = priority;
-        this.status = status;
+        this.completed = completed;
     }
 }

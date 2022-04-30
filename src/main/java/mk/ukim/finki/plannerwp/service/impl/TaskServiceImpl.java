@@ -10,6 +10,7 @@ import mk.ukim.finki.plannerwp.service.TaskService;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -36,12 +37,12 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     @Transactional //moze ke treba da vrati Optional
-    public Task addTask(String taskName, String description, Date date, Priority priority, boolean status) {
+    public Task addTask(String taskName, String description, Date date, Priority priority, boolean completed) {
         if (taskName == null || taskName.isEmpty()) {
             throw new InvalidArgumentException();
         }
 
-        Task addNewTask = new Task(taskName, description, date, priority, status);
+        Task addNewTask = new Task(taskName, description, date, priority, completed);
         return this.taskRepository.save(addNewTask);
 
     }
@@ -50,10 +51,17 @@ public class TaskServiceImpl implements TaskService {
     public Optional<Task> saveTask(TaskDto taskDto) throws Exception  {
 
         String date = taskDto.getDate();
-        Date newDate = new SimpleDateFormat("dd/mm/yyyy").parse(date);
+        Date newDate = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+        Priority priority = Priority.LOW;
+        if(taskDto.getPriority() == 2){
+            priority = Priority.MEDIUM;
+        } if(taskDto.getPriority() == 3){
+            priority = Priority.HIGH;
+        }
 
-        return Optional.of(this.taskRepository.save(new Task(taskDto.getTaskName(), taskDto.getDescription(),
-                newDate, taskDto.getPriority(), taskDto.isStatus())));
+        return Optional.of(this.taskRepository.save(new Task(taskDto.getTaskName(),
+                taskDto.getDescription(),
+                newDate, priority, taskDto.isCompleted())));
 
     }
 
@@ -76,9 +84,16 @@ public class TaskServiceImpl implements TaskService {
 
         task.setTaskName(taskDto.getTaskName());
         task.setDescription(taskDto.getDescription());
-        task.setStatus(taskDto.isStatus());
+        task.setCompleted(taskDto.isCompleted());
 
-        //so date exception mozebi
+        String date = taskDto.getDate();
+        Date newDate = null;
+        try {
+            newDate = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        task.setDate(newDate);
 
         return Optional.of(this.taskRepository.save(task));
     }

@@ -21,7 +21,7 @@ public class DailyTasks {
 
     public DailyTasks(Date date, List<Task> taskList) {
         this.date = date;
-        this.taskList = new ArrayList<>();
+        this.taskList = taskList;
     }
 
 

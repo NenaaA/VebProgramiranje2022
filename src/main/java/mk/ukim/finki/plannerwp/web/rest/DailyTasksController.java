@@ -1,11 +1,11 @@
 package mk.ukim.finki.plannerwp.web.rest;
 
-import mk.ukim.finki.plannerwp.model.DailyTasks;
+import mk.ukim.finki.plannerwp.model.Task;
 import mk.ukim.finki.plannerwp.service.DailyTasksService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
-import java.util.Optional;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/dailyTasks")
@@ -19,7 +19,7 @@ public class DailyTasksController {
     }
 
     @GetMapping("/date/{todayDate}")
-    public Optional<DailyTasks> getDailyTasks(@PathVariable Date todayDate){
-        return this.dailyTasksService.showTasks(todayDate);
+    public List<Task> getDailyTasks(@PathVariable Date todayDate){
+        return this.dailyTasksService.showDailyTasksByDate(todayDate);
     }
 }

@@ -2,14 +2,10 @@ package mk.ukim.finki.plannerwp.web.rest;
 
 import mk.ukim.finki.plannerwp.model.Task;
 import mk.ukim.finki.plannerwp.model.dto.TaskDto;
-import mk.ukim.finki.plannerwp.model.enumerations.Priority;
 import mk.ukim.finki.plannerwp.service.TaskService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 
 @RestController
 @RequestMapping("/api/task")

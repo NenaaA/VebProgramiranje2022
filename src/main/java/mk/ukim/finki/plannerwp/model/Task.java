@@ -20,14 +20,17 @@ public class Task {
 
     @Column(length = 2000)
     private String description;
+
     private Date date;
+
     private Priority priority;
-    private boolean status;
+
+    private boolean completed;
 
 
     public Task() {}
 
-    public Task(String taskName, String description, Date date, Priority priority, boolean status) {
+    public Task(String taskName, String description, Date date, Priority priority, boolean completed) {
         Random random = new Random();
         this.taskId = random.nextLong();
 
@@ -35,7 +38,7 @@ public class Task {
         this.description = description;
         this.date = date;
         this.priority = priority;
-        this.status = status;
+        this.completed = completed;
     }
 
 }
