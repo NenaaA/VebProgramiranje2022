@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping("/api/login")
+@RequestMapping("/login")
 @CrossOrigin(origins = "http://localhost:3000")
 public class LoginController {
 

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @RestController
@@ -35,10 +37,18 @@ public class RegisterController {
                            @RequestParam String repeatPassword,
                            @RequestParam String name,
                            @RequestParam String surname,
-                           @RequestParam Date dateOfBirth,
+                           @RequestParam String dateOfBirth,
                            @RequestParam String email){
+
+        Date newDate = null;
+        try {
+            newDate = new SimpleDateFormat("dd/MM/yyyy").parse(dateOfBirth);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         try{
-            this.userService.register(username, password, repeatPassword, name, surname, dateOfBirth, email);
+            this.userService.register(username, password, repeatPassword, name, surname, newDate, email);
             return "redirect:/login";
         } catch (PasswordsDoNotMatchException | InvalidArgumentException exception){
             return "redirect:/register?error=" + exception.getMessage();

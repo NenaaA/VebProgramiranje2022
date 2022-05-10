@@ -14,23 +14,20 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import React, {useState} from "react";
 
 const TaskForm = () => {
-    const [taskContent, setTaskContent] = useState("Task description");
-    const [taskName, setTaskName] = useState("Task name");
-    const [editMode, setEditMode] = useState(false);
+    const [editMode, setEditMode] = useState(true);
 
     const onEditTask = () => {
         setEditMode(true);
-        handleChangeName();
-        setTaskContent("Hello");
+        //handleChangeName();
     }
 
-    const handleChangeName = (e) => {
-        setTaskName(e.target.value);
-    }
-
-    const handleChangeDescription = (e) => {
-        setTaskContent(e.target.value);
-    }
+    // const handleChangeName = (e) => {
+    //     (e.target.value);
+    // }
+    //
+    // const handleChangeDescription = (e) => {
+    //     setTaskContent(e.target.value);
+    // }
 
     return (
         <>
@@ -45,9 +42,11 @@ const TaskForm = () => {
                     padding: "10px 7px",
                     margin: "10px"
                 }}>
+                    {editMode &&
                     <TextField fullWidth
-                               value={taskName}
-                               onChange={(e) => handleChangeName(e)}/>
+                               //value=//{taskName}
+                               //onChange={(e) => handleChangeName(e)}
+                    />}
 
                 </Grid>
                 <Divider/>
@@ -57,8 +56,9 @@ const TaskForm = () => {
                     margin: "10px"
                 }}>
                     <TextareaAutosize style={{width: "300px", height: "100px", padding: "10px"}}
-                                      value={taskContent}
-                                      onChange={(e) => handleChangeDescription(e)}/>
+                                      //value={taskContent}
+                                      //onChange={(e) => handleChangeDescription(e)}
+                     />
                 </Grid>
 
                 <RadioGroup

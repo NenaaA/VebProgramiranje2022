@@ -1,41 +1,29 @@
 import {
-    Button,
+    Button, Checkbox,
     Divider,
     FormControlLabel,
     Grid,
     Paper, Radio,
-    RadioGroup, TextareaAutosize, TextField,
+    RadioGroup, TextareaAutosize,
     Typography
 } from "@mui/material";
 import React, {useState} from "react";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import {Circle, Done} from "@mui/icons-material";
+import {Circle} from "@mui/icons-material";
+import {setPriorityColor, setPriorityTitle} from "../../ui/functions/Functions";
 
-//da dodadam check mark na taskot
+const Task = (props) => {
 
-const Task = () => {
-    const [taskContent, setTaskContent] = useState("Task description");
-    const [taskName, setTaskName] = useState("Task name");
     const [editMode, setEditMode] = useState(false);
 
     const onEditTask = () => {
         setEditMode(true);
-        handleChangeName();
-        setTaskContent("Hello");
     }
 
     // const deleteTask = () => {
     //
     // }
-
-    const handleChangeName = (e) => {
-        setTaskName(e.target.value);
-    }
-
-    const handleChangeDescription = (e) => {
-        setTaskContent(e.target.value);
-    }
 
     return (
         <>
@@ -46,15 +34,18 @@ const Task = () => {
                 //boxShadow: "4px 4px 10px #FF714B "
             }} elevation={5}>
 
-                <Grid sx={{
-                    padding: "10px 7px",
-                    margin: "10px"
-                }}>
-                    {!editMode ?
-                        <Typography variant={"h6"}>{taskName}</Typography> :
-                        <TextField fullWidth value={taskName}
-                                   onChange={(e) => handleChangeName(e)}/>}
+                <Grid container justifyContent={"space-between"} alignItems={"center"}>
+                    <Grid item sx={{
+                        padding: "10px 7px",
+                        margin: "10px"
+                    }}>
+                        <Typography variant={"h6"}>{props.data.name}</Typography>
 
+                    </Grid>
+                    <Grid item>
+                        {props.data.completed ? <Checkbox defaultChecked/> :
+                        <Checkbox />}
+                    </Grid>
                 </Grid>
                 <Divider/>
 
@@ -68,11 +59,10 @@ const Task = () => {
                             height: 100,
                             padding: 10
                         }}>
-                            {taskContent}
+                            {props.data.description}
                         </Paper> :
                         <TextareaAutosize style={{width: "300px", height: "100px", padding: "10px"}}
-                                          value={taskContent}
-                                          onChange={(e) => handleChangeDescription(e)}/>
+                                          value={props.data.description}/>
                     }
                 </Grid>
 
@@ -89,7 +79,10 @@ const Task = () => {
                         <FormControlLabel value="medium" control={<Radio/>} label="medium"/>
                         <FormControlLabel value="high" control={<Radio/>} label="high"/>
                     </RadioGroup> :
-                    <Circle sx={{color:"green", marginLeft:"0.8em"}}/>
+                    <Grid container alignItems={"center"}>
+                        <Circle color={setPriorityColor(props.data.priority)} sx={{marginX: "0.8em"}}/>
+                        <Typography variant={"subtitle2"}>{setPriorityTitle(props.data.priority)} Priority</Typography>
+                    </Grid>
                 }
 
 
@@ -109,15 +102,6 @@ const Task = () => {
                     }}>
                         <Button variant="outlined" startIcon={<DeleteIcon/>}>
                             Delete
-                        </Button>
-                    </Grid>
-
-                    <Grid item sx={{
-                        padding: "10px 7px",
-                        margin: "10px"
-                    }}>
-                        <Button variant="outlined" startIcon={<Done/>}>
-                            Finished
                         </Button>
                     </Grid>
 

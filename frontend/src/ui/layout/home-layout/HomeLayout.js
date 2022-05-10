@@ -28,7 +28,7 @@ const HomeLayout = ({children}) => {
                     <CustomDrawer/>
                 </Grid>
                 <Grid item>
-                    <Box component="main" sx={{ flexGrow: 1, padding:"5em"}}>
+                    <Box component="main" sx={{ flexGrow: 1, padding:"3em"}}>
                         <Toolbar/>
                         {children}
                     </Box>

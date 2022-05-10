@@ -10,7 +10,7 @@ public class TaskDto {
 
     private String taskName;
     private String description;
-    private String date; //moze i da treba se smeni vo Date date
+    private String date;
     private Integer priority;
     private boolean completed;
 
