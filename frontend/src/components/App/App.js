@@ -7,6 +7,9 @@ import Login from "../auth/login/login";
 import Logout from "../auth/logout/logout";
 import Register from "../auth/register/register";
 import AuthLayout from "../../ui/layout/auth-layout/AuthLayout";
+import Miscellaneous from "../miscellaneous/miscellaneous";
+import InProgress from "../inprogress/inprogress";
+import Finished from "../finished/finished";
 
 function App() {
     return (
@@ -23,17 +26,17 @@ function App() {
                 <Register/>
             </AuthLayout>}/>
 
-            <Route path="/miscellaneous" element={<AuthLayout>
-                <Register/>
-            </AuthLayout>}/>
+            <Route path="/miscellaneous" element={<HomeLayout>
+                <Miscellaneous/>
+            </HomeLayout>}/>
 
-            <Route path="/inprogress" element={<AuthLayout>
-                <Register/>
-            </AuthLayout>}/>
+            <Route path="/in-progress" element={<HomeLayout>
+                <InProgress/>
+            </HomeLayout>}/>
 
-            <Route path="/finished" element={<AuthLayout>
-                <Register/>
-            </AuthLayout>}/>
+            <Route path="/finished" element={<HomeLayout>
+                <Finished/>
+            </HomeLayout>}/>
 
 
             <Route path="/home" element={<React.Fragment>

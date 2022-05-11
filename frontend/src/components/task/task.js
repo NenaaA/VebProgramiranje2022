@@ -4,7 +4,7 @@ import {
     FormControlLabel,
     Grid,
     Paper, Radio,
-    RadioGroup, TextareaAutosize,
+    RadioGroup, TextareaAutosize, TextField,
     Typography
 } from "@mui/material";
 import React, {useState} from "react";
@@ -29,9 +29,8 @@ const Task = (props) => {
         <>
             <Paper sx={{
                 padding: "10px",
-                margin: "10px",
-                border: "solid 5px #ffb19c",
-                //boxShadow: "4px 4px 10px #FF714B "
+                margin: "15px",
+                border: "solid 5px #ffb19c"
             }} elevation={5}>
 
                 <Grid container justifyContent={"space-between"} alignItems={"center"}>
@@ -39,12 +38,14 @@ const Task = (props) => {
                         padding: "10px 7px",
                         margin: "10px"
                     }}>
-                        <Typography variant={"h6"}>{props.data.name}</Typography>
-
+                        {editMode ?
+                            <TextField fullWidth value={props.data.name}/> :
+                            <Typography variant={"h6"}>{props.data.name}</Typography>
+                        }
                     </Grid>
                     <Grid item>
                         {props.data.completed ? <Checkbox defaultChecked/> :
-                        <Checkbox />}
+                            <Checkbox/>}
                     </Grid>
                 </Grid>
                 <Divider/>
@@ -55,13 +56,13 @@ const Task = (props) => {
                 }}>
                     {!editMode ?
                         <Paper style={{
-                            width: 300,
+                            width: 400,
                             height: 100,
                             padding: 10
                         }}>
                             {props.data.description}
                         </Paper> :
-                        <TextareaAutosize style={{width: "300px", height: "100px", padding: "10px"}}
+                        <TextareaAutosize style={{width: "400px", height: "100px", padding: "10px"}}
                                           value={props.data.description}/>
                     }
                 </Grid>
