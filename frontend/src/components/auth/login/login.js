@@ -3,19 +3,25 @@ import {
     Button, Divider,
     FormControl,
     IconButton,
-    InputAdornment, Paper,
+    InputAdornment,
     TextField,
     Typography
 } from "@mui/material";
 import {Visibility, VisibilityOff} from "@mui/icons-material";
 import React, {useState} from "react";
 import AlternativeActionButtons from "../../../ui/alternative-action-buttons/AlternativeActionButtons";
+import {useNavigate} from "react-router-dom";
 
 const Login = (props) => {
     const [seePassword, setSeePassword] = useState(false);
+    const navigate = useNavigate();
 
     const handleSeePassword = () => {
         setSeePassword(!seePassword);
+    }
+
+    const handleLogin = () => {
+        navigate(`/`);
     }
 
     return (
@@ -51,6 +57,7 @@ const Login = (props) => {
                            }}/>
                 <Box justifyContent={"center"} display={"flex"}>
                     <Button variant={"contained"}
+                            onClick={handleLogin}
                             sx={{marginTop: "2em", width: "200px"}}>
                         Login</Button>
                 </Box>
@@ -58,7 +65,6 @@ const Login = (props) => {
             </FormControl>
 
             <AlternativeActionButtons login={true} handleButtonClick={props.handleRegisterClick}/>
-
         </>
     );
 }

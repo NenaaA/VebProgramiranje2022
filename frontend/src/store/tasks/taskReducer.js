@@ -1,5 +1,5 @@
 import {updateObject} from "../../ui/update/updateObject";
-import * as actionTypes from "../actionTypes";
+import {GET_DAILY_TASKS} from "./taskActions";
 
 const initial = {
     dailyTasks: []
@@ -11,7 +11,7 @@ const getTasks = (state, action) => {
 
 const taskReducer = (state = initial, action) => {
     switch (action.type) {
-        case actionTypes.GET_DAILY_TASKS:
+        case GET_DAILY_TASKS:
             return getTasks(state, action);
         default:
             return state;

@@ -1,24 +1,18 @@
 import {Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from "@mui/material";
-import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
-const Logout = () => {
+const Logout = (props) => {
+    const navigate = useNavigate();
 
     function yesPage() {
- //treba redirect do login page
+        navigate(`/auth`)
     }
-
-    const [openDialog, setOpenDialog] = useState(true)
-
-    const closeDialog = () => {
-        setOpenDialog(false);
-    }
-
 
     return (
         <>
             <Dialog
-                open={openDialog}
-                onClose={closeDialog}
+                open={props.open}
+                onClose={props.onClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
@@ -35,7 +29,7 @@ const Logout = () => {
 
                 <DialogActions>
                     <Button onClick={yesPage}>Yes</Button>
-                    <Button onClick={closeDialog} autoFocus>No</Button>
+                    <Button onClick={props.onClose} autoFocus>No</Button>
                 </DialogActions>
 
             </Dialog>

@@ -10,9 +10,6 @@ import java.util.Optional;
 @Repository
 public interface DailyTasksRepository extends JpaRepository<DailyTasks, Date> {
 
-    //ne e bash vaka vo auditoriskata
-//Optional<Task>
-  //  List<Optional<Task>> findTasksByPriority (Priority priority);
     Optional<DailyTasks> findAllByDate(Date date);
 
 }

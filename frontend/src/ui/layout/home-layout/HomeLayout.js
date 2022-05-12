@@ -3,12 +3,21 @@ import {AppBar, Box, Grid, IconButton, Toolbar, Typography} from "@mui/material"
 import React, {useState} from "react";
 import {PersonOutline} from "@mui/icons-material";
 import LogoutMenu from "../../../components/auth/logout/logout-menu/LogoutMenu";
+import Logout from "../../../components/auth/logout/logout";
 
 const HomeLayout = ({children}) => {
     const [openMenu, setOpenMenu] = useState(false);
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [openLogoutDialog, setOpenLogoutDialog] = useState(false);
 
-    const handleOpenMenu = () => {
+    const handleOpenMenu = (event) => {
+        setAnchorEl(event.currentTarget);
         setOpenMenu(true);
+    }
+
+    const handleClose = () => {
+        setOpenMenu(false);
+        setAnchorEl(null);
     }
 
     return (
@@ -28,7 +37,10 @@ const HomeLayout = ({children}) => {
                     <Grid item>
                         <IconButton onClick={handleOpenMenu}>
                             <PersonOutline sx={{color:"white", marginRight: "0.5em"}}/>
-                            <LogoutMenu/>
+                            <LogoutMenu open={openMenu}
+                                        anchorEl={anchorEl}
+                                        onClose={handleClose}
+                                        setOpenLogout={() => setOpenLogoutDialog(true)}/>
                         </IconButton>
                     </Grid>
                 </Grid>
@@ -44,6 +56,8 @@ const HomeLayout = ({children}) => {
                     </Box>
                 </Grid>
             </Grid>
+            <Logout open={openLogoutDialog}
+                    onClose={() => setOpenLogoutDialog(false)}/>
         </React.Fragment>
     );
 }

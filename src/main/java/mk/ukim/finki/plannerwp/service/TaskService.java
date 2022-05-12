@@ -14,12 +14,10 @@ public interface TaskService {
 
     Optional<Task> findById(Long id);
 
-    //Optional<Task>
     Task addTask(String taskName, String description, Date date, Priority priority, boolean status);
 
     Optional<Task> saveTask(TaskDto taskDto) throws Exception;
 
-    //Optional<Task>
     Task editTask(Long taskId, String taskName, String description, Date date, Priority priority, boolean status);
 
     Optional<Task> editTask(Long id, TaskDto taskDto);

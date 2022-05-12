@@ -35,7 +35,6 @@ const CustomDrawer = () => {
             <List>
                 <ListItemButton sx={{color:"white", paddingY:"1em"}} onClick={handleHomeClick}><AssignmentOutlined sx={{marginRight:"0.3em"}}/>Home page</ListItemButton>
                 <ListItemButton sx={{color:"white", paddingY:"1em"}} onClick={handleDailyTaskClick} fullWidth><TaskAltOutlined sx={{marginRight:"0.3em"}}/>All daily tasks</ListItemButton>
-                {/*<ListItemButton sx={{color:"white", paddingY:"1em"}} onClick={handleRandomClick} fullWidth><DirectionsRunOutlined sx={{marginRight:"0.3em"}}/>Miscellaneous</ListItemButton>*/}
                 <ListItemButton sx={{color:"white", paddingY:"1em"}} onClick={handleInProgressClick} fullWidth><PendingOutlined sx={{marginRight:"0.3em"}}/>In progress</ListItemButton>
                 <ListItemButton sx={{color:"white", paddingY:"1em"}} onClick={handleFinishedClick} fullWidth><Check sx={{marginRight:"0.3em"}}/>Finished</ListItemButton>
             </List>

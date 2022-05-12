@@ -48,17 +48,6 @@ const DailyTasks = () => {
                     {addTask ? <TaskForm/> : null}
                 </Grid>
             </Grid>
-
-            {/*<Box style={{*/}
-            {/*    fontStyle: "italic",*/}
-            {/*    marginTop: "50px"*/}
-            {/*}}>*/}
-            {/*    <Typography>Tips:</Typography>*/}
-            {/*    <Typography>Click the 'Add Task' button to add a task</Typography>*/}
-            {/*    <Typography>Click the 'Edit' button to edit a task</Typography>*/}
-            {/*    <Typography>Click the 'Delete' button to delete a task</Typography>*/}
-            {/*    <Typography>Click the 'Finished' button if you have finished the task</Typography>*/}
-            {/*</Box>*/}
         </Box>
     )
 }

@@ -36,7 +36,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    @Transactional //moze ke treba da vrati Optional
+    @Transactional
     public Task addTask(String taskName, String description, Date date, Priority priority, boolean completed) {
         if (taskName == null || taskName.isEmpty()) {
             throw new InvalidArgumentException();

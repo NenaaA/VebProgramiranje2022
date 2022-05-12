@@ -2,6 +2,7 @@ import {Box, Button, Divider, FormControl, TextField, Typography} from "@mui/mat
 import React from "react";
 
 const RegisterPasswords = (props) => {
+
     return (
         <>
                 <Box justifyContent={"center"} display={"flex"} mb={3}>

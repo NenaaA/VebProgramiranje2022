@@ -21,10 +21,6 @@ const Task = (props) => {
         setEditMode(true);
     }
 
-    // const deleteTask = () => {
-    //
-    // }
-
     return (
         <>
             <Paper sx={{
@@ -93,7 +89,7 @@ const Task = (props) => {
                         margin: "10px"
                     }}>
                         <Button variant="outlined" startIcon={<EditIcon/>} onClick={onEditTask}>
-                            Edit
+                            {editMode ? "Save" : "Edit"}
                         </Button>
                     </Grid>
 

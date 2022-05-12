@@ -28,8 +28,6 @@ public class LoginController {
     public String login(HttpServletRequest request, Model model) {
         UserAccount userAccount = null;
         try {
-//            userAccount = this.userService.login(request.getParameter("username"),
-//                    request.getParameter("password"));
             request.getSession().setAttribute("user", userAccount);
             return "redirect:/home";
         } catch (InvalidUserCredentialsException exception) {
